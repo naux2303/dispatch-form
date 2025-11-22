@@ -284,10 +284,10 @@
         <input type="text" id="in-footer-tel" value="(03)459-7769">
       </label>
       <label>底部傳真文字
-        <input type="text" id="in-footer-fax" value="(03)45-7103">
+        <input type="text" id="in-footer-fax" value="(03)459-7103">
       </label>
       <label>底部手機文字
-        <input type="text" id="in-footer-mobile" value="0932-028263">
+        <input type="text" id="in-footer-mobile" value="0932-028-263">
       </label>
 
       <button type="button" onclick="fillToday()">日期填今天</button>
@@ -669,10 +669,14 @@ bindTime("in-time-end", "f-time-end-h", "f-time-end-m");
 
     // 初始化：設定初步位置與載入儲存位置
     window.addEventListener("load", () => {
+      // ① 先把日期預設成今天（等於自動幫你填年份＋月日）
+      fillToday();
+
+      // ② 再處理欄位位置
       setInitialPositions();
       loadPositions();
 
-      // 每個欄位雙擊可調整字體大小（僅在調整模式下）
+      // ③ 雙擊改字體大小
       fields.forEach(el => {
         el.addEventListener('dblclick', e => {
           if (!editing) return;
